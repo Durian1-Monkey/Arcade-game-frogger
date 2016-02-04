@@ -81,7 +81,7 @@ Player.prototype.update = function() {
     }
     this.ctlKey = null;
 
-    if (this.y <= 25) {
+    if (Enemy.y <= 25) {
         var audio = new Audio('Sound_Effect_2.mp3');
         audio.play();
         this.reset();
