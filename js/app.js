@@ -1,17 +1,9 @@
 // Draw the enemy on the screen, required method for game
-var Character = function(x, y) {
-    this.x = 0;
-    this.y = 0;
-    this.sprite = 0;
-};
-
-Character.prototype.render = function() {
+Object.prototype.render = function() {
     ctx.drawImage(Resources.get(this.sprite), this.x, this.y);
 };
-
 // Enemies our player must avoid
 var Enemy = function(x, y) {
-    Character.call(this, x, y);
     // Variables applied to each of our instances go here,
     // we've provided one for you to get started
 
@@ -21,6 +13,7 @@ var Enemy = function(x, y) {
     this.x = x;
     this.y = y;
     this.sprite = 'images/enemy-bug.png';
+    //    this.speed = 2*(20*Math.floor(Math.random() * 200)+100);
     this.speed = 2 * Math.floor((Math.random() * 200) + 100);
 };
 // Update the enemy's position, required method for game
@@ -43,11 +36,6 @@ Enemy.prototype.update = function(dt) {
         }
     }
 };
-
-Enemy.prototype.render = function() {
-    Character.prototype.render.call(this);
-};
-
 //////////
 //Player//
 //////////
@@ -56,7 +44,6 @@ Enemy.prototype.render = function() {
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
-    Character.call(this);
     this.x = 200;
     this.y = 400;
     this.sprite = 'images/char-boy.png';
@@ -64,42 +51,35 @@ var Player = function() {
 //reset player's postion
 Player.prototype.reset = function() {
     console.log("New Player");
-    this.x = 200;
-    this.y = 400;
+    player.x = 200;
+    player.y = 400;
 };
 Player.prototype.update = function() {
-    var TILE_WIDTH = 101;
-    var TILE_HEIGHT = 83;
     if (this.ctlKey === 'left' && this.x > 0) {
-        this.x = this.x - TILE_WIDTH;
+        this.x = this.x - 100;
     } else if (this.ctlKey === 'right' && this.x < 400) {
-        this.x = this.x + TILE_WIDTH;
+        this.x = this.x + 100;
     } else if (this.ctlKey === 'up') {
-        this.y = this.y - TILE_HEIGHT;
+        this.y = this.y - 85;
     } else if (this.ctlKey === 'down' && this.y < 400) {
-        this.y = this.y + TILE_HEIGHT;
+        this.y = this.y + 85;
     }
     this.ctlKey = null;
 
-    if (Enemy.y <= 25) {
+    if (this.y <= 25) {
         var audio = new Audio('Sound_Effect_2.mp3');
         audio.play();
         this.reset();
     }
 };
-
-Player.prototype.render = function() {
-    Character.prototype.render.call(this);
-};
-
 // Now instantiate your objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [];
 var len = allEnemies.length;
-for (var i = 0; i <= len; i++) {
+for (i = 0; i <= len; i++) {
     var x = 0;
-    for (var j = 50; j <= 300; j += 83) {
+    for (j = 50; j <= 300; j += 75) {
         var y = j;
         console.log(y);
         allEnemies.push(new Enemy(x, y));
