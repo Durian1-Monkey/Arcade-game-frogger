@@ -108,3 +108,25 @@ var SoundEffect1 = function() {
 var SoundEffect2 = function() {
     var audio = new Audio('Sound_Effect_2.mp3');
 };
+
+var characters = ["images/char-boy.png",
+    "images/char-cat-girl.png",
+    "images/char-horn-girl.png",
+    "images/char-pink-girl.png",
+    "images/char-princess-girl.png"
+];
+
+//Add function to change characters
+var elem = document.getElementById("char");
+(function() {
+    var change = 0;
+    document.addEventListener('click',
+        function() {
+            if (change < 4) {
+                player.sprite = characters[++change];
+            } else if (change == 4) {
+                change = 0;
+                player.sprite = characters[change];
+            }
+        }, false);
+})();
