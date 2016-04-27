@@ -5,7 +5,7 @@ Object.prototype.render = function() {
 // Enemies our player must avoid
 var Enemy = function(x, y) {
     // Variables applied to each of our instances go here,
-    // we've provided one for you to get started
+    // we've provided one for me to get started
 
     // The image/sprite for our enemies, this uses
     // a helper we've provided to easily load images
@@ -19,7 +19,7 @@ var Enemy = function(x, y) {
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
 Enemy.prototype.update = function(dt) {
-    // You should multiply any movement by the dt parameter
+    // I should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
     var pi = 3.14;
@@ -40,7 +40,7 @@ Enemy.prototype.update = function(dt) {
 //Player//
 //////////
 
-// Now write your own player class
+// Now write my own player class
 // This class requires an update(), render() and
 // a handleInput() method.
 var Player = function() {
@@ -72,7 +72,7 @@ Player.prototype.update = function() {
         this.reset();
     }
 };
-// Now instantiate your objects.
+// Now instantiate my objects.
 // Place all enemy objects in an array called allEnemies
 // Place the player object in a variable called player
 var allEnemies = [];
@@ -90,8 +90,8 @@ var player = new Player();
 Player.prototype.handleInput = function(e) {
     this.ctlKey = e;
 };
-// This listens for key presses and sends the keys to your
-// Player.handleInput() method. You don't need to modify this.
+// This listens for key presses and sends the keys to my
+// Player.handleInput() method. I don't need to modify this.
 document.addEventListener('keyup', function(e) {
     var allowedKeys = {
         37: 'left',
