@@ -1,4 +1,4 @@
-frontend-nanodegree-arcade-game
+# Udacity Project 3: Arcade Game Clone
 ===============================
 
 ### How to Play
